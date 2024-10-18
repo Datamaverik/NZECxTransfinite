@@ -1,0 +1,95 @@
+@font-face {
+  font-family: Orbitron;
+  src: url("./Orbitron-Regular.27ed04af.ttf") format('truetype');
+}
+@font-face {
+  font-family: Nunito;
+  src: url("./Nunito-Regular.53a5ca69.ttf") format('truetype');
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+:root {
+  --background-color: #141414;
+  --foreground-color: #87bcb6;
+  --foregound-neg: #1c1e1e;
+  --foregound-pos: #486860;
+  --header: #00765c;
+  --text-color: #e2e2e2;
+}
+*{
+ scrollbar-width: thin;
+  scrollbar-color: var(--foregound-neg) var(--background-color);
+}
+*::-webkit-scrollbar{
+  width: 12px;
+}
+*::-webkit-scrollbar-track{
+  background-color: var(--background-color);
+}
+*::-webkit-scrollbar-thumb{
+  background-color: var(--foregound-neg);
+  border-radius: 5px;
+  border: 3px solid var(--background-color);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: Nunito Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 1.2rem;
+  position: relative;
+  overflow-y: hidden;
+}
+
+button {
+  font-family: Orbitron Verdana, Geneva, Tahoma, sans-serif;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: var(--foregound-pos);
+  color: var(--background-color);
+  font-size: large;
+  font-weight: bolder;
+  transition: all 0.25s ease;
+}
+
+button:hover {
+  cursor: pointer;
+  color: var(--text-color);
+  background-color: var(--header);
+  text-shadow: 0px 0px 2px white;
+}
+
+a {
+  color: var(--foregound-pos);
+  text-decoration: none;
+  font-size: large;
+}
+
+a:hover {
+  cursor: pointer;
+  text-shadow: 0px 0px 3px white;
+  color: var(--text-color);
+}
+
+p {
+  color: var(--text-color);
+  font-size: large;
+  font-weight: bold;
+  text-shadow: 0px 0px 2px black;
+  padding: 0px;
+  margin: 3px;
+}
+
+@media (max-width: 768px) {
+  p{
+    font-size: 1rem;
+  }
+}
