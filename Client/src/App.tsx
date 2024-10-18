@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import * as UserApi from "./network/api";
+import './index.css';
 
 function App() {
   const [data, setData] = useState<UserApi.TestRouteResponse>({ message: "" });
@@ -17,7 +18,7 @@ function App() {
     testHomeRoute();
   }, []);
 
-  return <div>{data.message}</div>;
+  return <div className="text-5xl font-bold underline">Demo bitch</div>;
 }
 
 export default App;
