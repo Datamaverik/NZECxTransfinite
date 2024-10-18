@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import styles from "../styles/form.module.css";
 import { FieldError, RegisterOptions, UseFormRegister } from "react-hook-form";
 
 interface TextInputFieldProps {
@@ -20,16 +19,16 @@ const TextInputField = ({
   ...props
 }: TextInputFieldProps) => {
   return (
-    <div className={styles.textGroup}>
-      <label htmlFor={name} className={styles.formLabel}>{label}</label>
+    <div className="flex flex-col text-[1.5rem] mb-5 text-gray-400">
+      <label htmlFor={name}>{label}</label>
       <input
+        className={`rounded-md p-1 border-[2px] ${error ? 'border-red-600' : 'border-gray-300'}`}
         id={name}
-        className={`${styles.inputArea} ${error ? styles.invalid : ""}`}
         {...props}
         {...register(name, registerOptions)}
         aria-invalid={!!error}
       />
-      {error && <div className={styles.invalidFeedback}>{error.message}</div>}
+      {error && <div className="text-red-600">{error.message}</div>}
     </div>
   );
 };

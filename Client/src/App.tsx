@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import * as UserApi from "./network/api";
 import './index.css';
+import Login from "./pages/Login";
 
 function App() {
   const [data, setData] = useState<UserApi.TestRouteResponse>({ message: "" });
@@ -18,7 +19,10 @@ function App() {
     testHomeRoute();
   }, []);
 
-  return <div className="text-5xl font-bold underline">Demo bitch</div>;
+  return (
+  <div className="flex justify-center">
+    <Login/>
+  </div>);
 }
 
 export default App;
