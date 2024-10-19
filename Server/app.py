@@ -6,7 +6,7 @@ from models import Base, User
 from pydantic import BaseModel
 from typing import List
 import uvicorn
-
+from vulncheck import check_vuln
 from typing import Optional
 import httpx
 import re
@@ -27,6 +27,9 @@ async def startup():
 class UserCreate(BaseModel):
     name: str
     email: str
+
+class VulnCheckReq(BaseModel):
+    code: str
 
 class UserResponse(BaseModel):
     id: int
@@ -87,6 +90,7 @@ async def delete_user(user_id: int, db: AsyncSession = Depends(get_db)):
     await db.commit()
     return {"detail": "User deleted"}
 
+
 # Helper function to recursively get .py and .js files from GitHub repository
 async def fetch_files_recursively(client, owner, repo, path=""):
     files = []
@@ -108,7 +112,7 @@ async def fetch_files_recursively(client, owner, repo, path=""):
     return files
 
 # Endpoint to get .py and .js files from a GitHub repository
-@app.get("/get_repo_files")
+@app.get("/api/get_repo_files")
 async def get_repo_files(repo_link: str):
     match = re.match(r"https://github.com/([\w-]+)/([\w-]+)", repo_link)
     if not match:
@@ -120,3 +124,7 @@ async def get_repo_files(repo_link: str):
         files = await fetch_files_recursively(client, owner, repo)
     
     return {"files": files}
+
+@app.post("/api/check_vuln")
+def check(req: VulnCheckReq):
+    return check_vuln(req.code)
