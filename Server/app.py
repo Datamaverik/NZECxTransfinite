@@ -14,8 +14,23 @@ import re
 import os
 import base64
 
+from fastapi.middleware.cors import CORSMiddleware
+
 # Initialize FastAPI
 app = FastAPI()
+
+origins = [
+    "http://localhost",  # If your frontend is running on localhost
+    "http://localhost:5173",  # Allow requests from frontend React app on port 3000
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,  # Allow these origins
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all HTTP methods (GET, POST, etc.)
+    allow_headers=["*"],  # Allow all headers
+)
 
 # Create database tables on startup
 @app.on_event("startup")

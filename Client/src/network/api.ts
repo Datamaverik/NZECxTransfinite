@@ -1,5 +1,5 @@
 import axios from "axios";
-import { AxiosError } from "axios";
+import { CodeBody } from "../components/InputBox";
 
 const baseURL = "http://127.0.0.1:8000";
 
@@ -11,20 +11,29 @@ const api = axios.create({
   },
 });
 
-export interface TestRouteResponse{
-  message:string;
+export interface TestRouteResponse {
+  message: string;
 }
 export const testRoute = async () => {
   try {
     const response = await api.get<TestRouteResponse>("/");
     return response.data;
   } catch (er) {
-    if (er instanceof AxiosError) throw new Error(er.message);
+    throw new Error(er.message);
   }
 };
 
 export interface loginCredentials {
   username: string;
   password: string;
-  name:string;
+  name: string;
 }
+
+export const vulnRes = async (input: CodeBody) => {
+  try {
+    const response = await api.post("/api/check_vuln", input);
+    return response.data;
+  } catch (er) {
+    throw new Error(er);
+  }
+};
