@@ -2,8 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { PlaceholdersAndVanishInput } from "./ui/placeholders-and-vanish-input";
 import * as UserApi from "../network/api";
 import gsap from "gsap";
-import { MultiStepLoader as Loader } from "./ui/multi-step-loader";
-import { IconSquareRoundedX } from "@tabler/icons-react";
 
 export interface CodeBody {
   code: string;
@@ -14,33 +12,6 @@ interface parsedResponse {
   fix: string;
   vulnerability: string;
 }
-
-const loadingStates = [
-  {
-    text: "Comparing with existing vulnerable samples",
-  },
-  {
-    text: "",
-  },
-  {
-    text: "Meeting Tyler Durden",
-  },
-  {
-    text: "He makes soap",
-  },
-  {
-    text: "We goto a bar",
-  },
-  {
-    text: "Start a fight",
-  },
-  {
-    text: "We like it",
-  },
-  {
-    text: "Welcome to F**** C***",
-  },
-];
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function is_Array_or_object(response: any) {
@@ -82,7 +53,6 @@ export function InputBox() {
   const loaderRef = useRef<HTMLDivElement>(null);
   const inputBoxRef = useRef<HTMLDivElement>(null);
   const responseRef = useRef<HTMLDivElement>(null);
-  const [loading, setLoading] = useState(false);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCode(e.target.value);
   };
@@ -93,7 +63,6 @@ export function InputBox() {
       code: code,
     };
 
-    setLoading(true);
     if (loaderRef.current) loaderRef.current.style.display = "block";
     const response = await UserApi.vulnRes(requestData);
     console.log(response);
@@ -129,12 +98,9 @@ export function InputBox() {
 
     setTimeout(() => {
       setSubmitted(true);
-      setLoading(false);
-      if (loaderRef.current) loaderRef.current.style.display = "none";
     }, 1000);
   };
   useEffect(() => {
-    if (loaderRef.current) loaderRef.current.style.display = "none";
     if (submitted) {
       gsap.to(headingRef.current, {
         opacity: 0,
@@ -158,25 +124,6 @@ export function InputBox() {
   }, [submitted]);
   return (
     <div className="h-[100vh] max-w-[100vw] max-h-[100vh] flex flex-col justify-center  items-center">
-      <div
-        ref={loaderRef}
-        className="w-full h-[60vh] flex items-center justify-center"
-      >
-        {/* Core Loader Modal */}
-        <Loader
-          loadingStates={loadingStates}
-          loading={loading}
-          duration={2000}
-        />
-        {loading && (
-          <button
-            className="fixed top-4 right-4 text-black dark:text-white z-[120]"
-            onClick={() => setLoading(false)}
-          >
-            <IconSquareRoundedX className="h-10 w-10" />
-          </button>
-        )}
-      </div>
       <h2
         ref={headingRef}
         className="mb-10 sm:mb-20 text-3xl text-center sm:text-7xl dark:text-white text-black"
@@ -205,7 +152,8 @@ export function InputBox() {
                 <code>{item.code}</code>
               </pre>
               <div className="alert alert-warning mt-2 max-w-[70vw]">
-                <strong className="text-red-700">Vulnerability:</strong> {item.vulnerability}
+                <strong className="text-red-700">Vulnerability:</strong>{" "}
+                {item.vulnerability}
               </div>
               <div className="bg- text-blue-500 p-4 rounded mt-2 max-w-[70vw]">
                 <strong>Fix:</strong> {item.fix}
