@@ -1,0 +1,9 @@
+html {
+  scroll-snap-type: y mandatory;
+}
+
+.panel {
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+  height: 100vh;
+}

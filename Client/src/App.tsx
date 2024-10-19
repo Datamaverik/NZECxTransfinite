@@ -1,22 +1,32 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import "./index.css";
+import styles from "./components/scrollSnap.module.css"
 import { Landing } from "./components/Landing";
+import { InputBox } from "./components/InputBox";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
-import { InputBox } from "./components/InputBox";
 
-gsap.registerEffect(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
 function App() {
-  const landingEl = useRef(null);
+  ScrollTrigger.defaults({
+    toggleActions: "restart pause resume pause",
+    scroller: ".container"
+  });
+  
   useEffect(() => {
     document.documentElement.classList.add("dark");
   }, []);
 
   return (
-    <div ref={landingEl}>
-      <Landing />
-      <InputBox />
+    <div className="max-w-[100vw] max-h-[100vh]">
+      <div className={styles.panel}>
+        <Landing />
+      </div>
+
+      <div className={styles.panel}>
+        <InputBox />
+      </div>
     </div>
   );
 }

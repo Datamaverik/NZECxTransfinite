@@ -30,16 +30,25 @@ export function InputBox() {
   };
   useEffect(() => {
     if (submitted) {
-      gsap.to(headingRef.current, { opacity: 0, duration: 1 });
-      gsap.to(inputBoxRef.current, { y:"30vh", duration: 1 });
+      gsap.to(headingRef.current, {
+        opacity: 0,
+        duration: 1,
+        scrub: 0.8,
+        onComplete: () => {
+          if (headingRef.current) {
+            headingRef.current.style.display = "none";
+          }
+        },
+      });
+      gsap.to(inputBoxRef.current, { y: "40vh", duration: 1 });
       gsap.to(responseRef.current, { opacity: 1, duration: 1, delay: 1 });
     }
   }, [submitted]);
   return (
-    <div className="h-[100vh] max-h-[100vh] flex flex-col justify-center  items-center px-4">
+    <div className="h-[100vh] max-w-[100vw] max-h-[100vh] flex flex-col justify-center  items-center">
       <h2
         ref={headingRef}
-        className="mb-10 sm:mb-20 text-2xl text-center sm:text-7xl dark:text-white text-black"
+        className="mb-10 sm:mb-20 text-3xl text-center sm:text-7xl dark:text-white text-black"
       >
         Give us your faulty code
       </h2>

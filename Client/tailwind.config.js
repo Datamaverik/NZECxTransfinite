@@ -17,6 +17,12 @@ module.exports = {
       },
     },
     extend: {
+      scrollSnapType: {
+        'y-mandatory': 'y mandatory',
+      },
+      scrollSnapAlign: {
+        start: 'start',
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

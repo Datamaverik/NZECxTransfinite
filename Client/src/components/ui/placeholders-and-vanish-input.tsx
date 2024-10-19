@@ -173,22 +173,22 @@ export function PlaceholdersAndVanishInput({
   const adjustHeight = () => {
     const textarea = contRef.current;
     if (textarea) {
-      textarea.style.height = "5vh"; // Reset to minimum height
+      textarea.style.height = "7vh"; // Reset to minimum height
       textarea.style.height = `${Math.min(textarea.scrollHeight, 12 * 16)}px`; // grow until max height (12vh in px)
     }
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (contRef.current) contRef.current.style.height = "5vh";
-    vanishAndSubmit();
+    if (contRef.current) contRef.current.style.height = "6.5vh";
+    vanishAndSubmit();contRef
     onSubmit && onSubmit(e);
   };
   return (
     <form
       ref={contRef}
       className={cn(
-        "max-w-[70vw] h-[5vh] max-h-[12vh] text-5xl relative  mx-auto bg-white dark:bg-zinc-800 rounded-3xl overflow-hidden shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200",
+        "max-w-[70vw] h-[6.5vh] max-h-[12vh] text-5xl relative  mx-auto bg-white dark:bg-zinc-800 rounded-3xl overflow-hidden shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200",
         value && "bg-gray-50"
       )}
       onSubmit={handleSubmit}
@@ -198,7 +198,7 @@ export function PlaceholdersAndVanishInput({
     >
       <canvas
         className={cn(
-          "absolute pointer-events-none  text-xl transform scale-50 top-[20%] left-2 sm:left-8 origin-top-left filter invert dark:invert-0 pr-20",
+          "absolute pointer-events-none  text-2xl transform scale-50 top-[20%] left-2 sm:left-8 origin-top-left filter invert dark:invert-0 pr-20",
           !animating ? "opacity-0" : "opacity-100"
         )}
         ref={canvasRef}
@@ -214,7 +214,7 @@ export function PlaceholdersAndVanishInput({
         value={value}
         type="text"
         className={cn(
-          "w-[80vw] p-3 h-auto relative text-xl resize-none overflow-hidden sm:text-2xl z-50 border-none dark:text-white bg-transparent text-black h-full rounded-full focus:outline-none focus:ring-0 pl-4 sm:pl-10 pr-20",
+          "w-[80vw] p-3 h-auto relative text-2xl resize-none overflow-hidden sm:text-3xl z-50 border-none dark:text-white bg-transparent text-black h-full rounded-full focus:outline-none focus:ring-0 pl-4 sm:pl-10 pr-20",
           animating && "text-transparent dark:text-transparent"
         )}
       />
@@ -234,7 +234,7 @@ export function PlaceholdersAndVanishInput({
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="text-gray-300 h-4 w-4"
+          className="text-gray-300 h-[2rem] w-[2rem]"
         >
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
           <motion.path
@@ -277,7 +277,7 @@ export function PlaceholdersAndVanishInput({
                 duration: 0.3,
                 ease: "linear",
               }}
-              className="dark:text-zinc-500 text-sm sm:text-base font-normal text-neutral-500 pl-4 sm:pl-12 text-left w-[calc(100%-2rem)] truncate"
+              className="dark:text-zinc-500 text-lg sm:text-xl font-normal text-neutral-500 pl-4 sm:pl-12 text-left w-[calc(100%-2rem)] truncate"
             >
               {placeholders[currentPlaceholder]}
             </motion.p>
