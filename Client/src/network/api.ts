@@ -23,27 +23,8 @@ export const testRoute = async () => {
   }
 };
 
-export const getLoggedInUser = async () => {
-  try {
-    const response = await api.get("/api/users/");
-    return response.data;
-  } catch (er) {
-    console.error(er);
-    if (er instanceof AxiosError) throw new Error(er.message);
-  }
-};
-
 export interface loginCredentials {
   username: string;
   password: string;
+  name:string;
 }
-
-export const login = async (credentials: loginCredentials) => {
-  try {
-    const response = await api.post("/api/users/login", credentials);
-    return response.data;
-  } catch (er) {
-    console.error(er);
-    if (er instanceof AxiosError) throw new Error(er.response?.data.message);
-  }
-};

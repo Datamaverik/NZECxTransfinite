@@ -1,28 +1,24 @@
-import { useEffect, useState } from "react";
-import * as UserApi from "./network/api";
-import './index.css';
-import Login from "./pages/Login";
+import { useEffect, useRef } from "react";
+import "./index.css";
+import { Landing } from "./components/Landing";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
+import { InputBox } from "./components/InputBox";
+
+gsap.registerEffect(ScrollTrigger);
 
 function App() {
-  const [data, setData] = useState<UserApi.TestRouteResponse>({ message: "" });
-
+  const landingEl = useRef(null);
   useEffect(() => {
-    const testHomeRoute = async () => {
-      try {
-        const response = await UserApi.testRoute();
-        console.log(response);
-        if (response) setData(response);
-      } catch (er) {
-        console.error(er);
-      }
-    };
-    testHomeRoute();
+    document.documentElement.classList.add("dark");
   }, []);
 
   return (
-  <div className="flex justify-center">
-    <Login/>
-  </div>);
+    <div ref={landingEl}>
+      <Landing />
+      <InputBox />
+    </div>
+  );
 }
 
 export default App;

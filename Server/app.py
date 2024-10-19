@@ -37,7 +37,7 @@ class UserResponse(BaseModel):
         orm_mode = True
 
 # Create User
-@app.post("/users/", response_model=UserResponse)
+@app.post("api/users/", response_model=UserResponse)
 async def create_user(user: UserCreate, db: AsyncSession = Depends(get_db)):
     new_user = User(name=user.name, email=user.email)
     db.add(new_user)
@@ -46,14 +46,14 @@ async def create_user(user: UserCreate, db: AsyncSession = Depends(get_db)):
     return new_user
 
 # Get all users
-@app.get("/users/", response_model=List[UserResponse])
+@app.get("api/users/", response_model=List[UserResponse])
 async def read_users(skip: int = 0, limit: int = 10, db: AsyncSession = Depends(get_db)):
     result = await db.execute(select(User).offset(skip).limit(limit))
     users = result.scalars().all()
     return users
 
 # Get user by ID
-@app.get("/users/{user_id}", response_model=UserResponse)
+@app.get("api/users/{user_id}", response_model=UserResponse)
 async def read_user(user_id: int, db: AsyncSession = Depends(get_db)):
     result = await db.execute(select(User).where(User.id == user_id))
     user = result.scalar_one_or_none()
@@ -62,7 +62,7 @@ async def read_user(user_id: int, db: AsyncSession = Depends(get_db)):
     return user
 
 # Update user
-@app.put("/users/{user_id}", response_model=UserResponse)
+@app.put("api/users/{user_id}", response_model=UserResponse)
 async def update_user(user_id: int, user: UserCreate, db: AsyncSession = Depends(get_db)):
     result = await db.execute(select(User).where(User.id == user_id))
     db_user = result.scalar_one_or_none()
@@ -76,7 +76,7 @@ async def update_user(user_id: int, user: UserCreate, db: AsyncSession = Depends
     return db_user
 
 # Delete user
-@app.delete("/users/{user_id}")
+@app.delete("api/users/{user_id}")
 async def delete_user(user_id: int, db: AsyncSession = Depends(get_db)):
     result = await db.execute(select(User).where(User.id == user_id))
     user = result.scalar_one_or_none()
