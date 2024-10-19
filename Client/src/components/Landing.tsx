@@ -8,7 +8,7 @@ export function Landing() {
         className="flex items-center flex-col justify-center w-full h-full"
       >
         <h1 className="text-white text-2xl md:text-6xl font-bold text-center">
-          How's it going
+          Mongo mummy kaisi hai
         </h1>
       </Vortex>
     </div>

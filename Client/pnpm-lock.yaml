@@ -8,12 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@gsap/react':
-        specifier: ^2.1.1
-        version: 2.1.1
-      '@tabler/icons-react':
-        specifier: ^3.19.0
-        version: 3.19.0(react@18.3.1)
       '@tsparticles/engine':
         specifier: ^3.5.0
         version: 3.5.0
@@ -38,9 +32,6 @@ importers:
       framer-motion:
         specifier: ^11.11.9
         version: 11.11.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      gsap:
-        specifier: ^3.12.5
-        version: 3.12.5
       lucide-react:
         specifier: ^0.453.0
         version: 0.453.0(react@18.3.1)
@@ -375,9 +366,6 @@ packages:
     resolution: {integrity: sha512-vH9PiIMMwvhCx31Af3HiGzsVNULDbyVkHXwlemn/B0TFj/00ho3y55efXrUZTfQipxoHC5u4xq6zblww1zm1Ig==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@gsap/react@2.1.1':
-    resolution: {integrity: sha512-apGPRrmpqxvl1T6Io1KgT8tFU+IuACI6z4zmT7t8+PASserJeLVRFJdSNUFA2Xb/eVkZI1noE8LIrY/w/oJECw==}
-
   '@humanfs/core@0.19.0':
     resolution: {integrity: sha512-2cbWIHbZVEweE853g8jymffCA+NCMiuqeECeBBLm8dg2oFdjuGJhgN4UAbI+6v0CKbbhvtXA4qV8YR5Ji86nmw==}
     engines: {node: '>=18.18.0'}
@@ -511,14 +499,6 @@ packages:
     resolution: {integrity: sha512-fbMkAF7fufku0N2dE5TBXcNlg0pt0cJue4xBRE2Qc5Vqikxr4VCgKj/ht6SMdFcOacVA9rqF70APJ8RN/4vMJw==}
     cpu: [x64]
     os: [win32]
-
-  '@tabler/icons-react@3.19.0':
-    resolution: {integrity: sha512-AqEWGI0tQWgqo6ZjMO5yJ9sYT8oXLuAM/up0hN9iENS6IdtNZryKrkNSiMgpwweNTpl8wFFG/dAZ959S91A/uQ==}
-    peerDependencies:
-      react: '>= 16'
-
-  '@tabler/icons@3.19.0':
-    resolution: {integrity: sha512-A4WEWqpdbTfnpFEtwXqwAe9qf9sp1yRPvzppqAuwcoF0q5YInqB+JkJtSFToCyBpPVeLxJUxxkapLvt2qQgnag==}
 
   '@tsparticles/basic@3.5.0':
     resolution: {integrity: sha512-oty33TxM2aHWrzcwWRic1bQ04KBCdpnvzv8JXEkx5Uyp70vgVegUbtKmwGki3shqKZIt3v2qE4I8NsK6onhLrA==}
@@ -1084,9 +1064,6 @@ packages:
 
   graphemer@1.4.0:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
-
-  gsap@3.12.5:
-    resolution: {integrity: sha512-srBfnk4n+Oe/ZnMIOXt3gT605BX9x5+rh/prT2F1SsNJsU1XuMiP0E2aptW481OnonOGACZWBqseH5Z7csHxhQ==}
 
   has-flag@3.0.0:
     resolution: {integrity: sha512-sKJf1+ceQBr4SMkvQnBDNDtf4TXpVhVGateu0t918bl30FnbE2m4vNLX+VWe/dpjlb+HugGYzW7uQXH98HPEYw==}
@@ -1864,11 +1841,6 @@ snapshots:
     dependencies:
       levn: 0.4.1
 
-  '@gsap/react@2.1.1':
-    dependencies:
-      gsap: 3.12.5
-      react: 18.3.1
-
   '@humanfs/core@0.19.0': {}
 
   '@humanfs/node@0.16.5':
@@ -1968,13 +1940,6 @@ snapshots:
 
   '@rollup/rollup-win32-x64-msvc@4.24.0':
     optional: true
-
-  '@tabler/icons-react@3.19.0(react@18.3.1)':
-    dependencies:
-      '@tabler/icons': 3.19.0
-      react: 18.3.1
-
-  '@tabler/icons@3.19.0': {}
 
   '@tsparticles/basic@3.5.0':
     dependencies:
@@ -2644,8 +2609,6 @@ snapshots:
   globals@15.11.0: {}
 
   graphemer@1.4.0: {}
-
-  gsap@3.12.5: {}
 
   has-flag@3.0.0: {}
 
