@@ -13,6 +13,7 @@ import httpx
 import re
 import os
 import base64
+from main_main import evaluate_repo
 
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -186,6 +187,10 @@ async def get_repo_files_content(repo_link: str):
             files_content.append(content)
     
     return {"files": files_content}
+
+@app.get("/api/evaluate_repo")
+def evaluate_repo_api(github_link: str):
+    return evaluate_repo(github_link)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=8000)
