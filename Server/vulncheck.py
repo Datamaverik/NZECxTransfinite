@@ -265,7 +265,7 @@ def check_vuln(code):
     vulns = rmprefix(vulns, "```").strip()
     vulns = rmsuffix(vulns, "```").strip()
 
-    return json.loads(vulns)
+    return json.loads(vulns, strict=False)
 
 # Example of user input handling and API call
 # Example user query

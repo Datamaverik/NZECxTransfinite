@@ -49,7 +49,7 @@ def load_vuln_str(vulns):
     vulns = rmprefix(vulns, "```").strip()
     vulns = rmsuffix(vulns, "```").strip()
 
-    return json.loads(vulns)
+    return json.loads(vulns, strict=False)
 
 
 @lru_cache(maxsize=None)
@@ -61,7 +61,7 @@ def evaluate_repo(github_link):
     base_path = pathlib.Path.cwd() / repo_name
     assert base_path.exists(), f"Repo {repo_name} not found."
 
-    data = json.loads(cds.main(github_link, repo_name).strip())
+    data = json.loads(cds.main(github_link, repo_name).strip(), strict=False)
 
     file_paths = [item["file_path"] for item in data]
     messages = [item["message"] for item in data]
