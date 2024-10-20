@@ -1,4 +1,4 @@
-readme_content = """
+
 # xTransfinitte - CYWRECK CY1: Code Vulnerability Detection Using LLMs
 
 ## Team Members:
