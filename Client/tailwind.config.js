@@ -2,10 +2,10 @@
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
   ],
   prefix: "",
   theme: {
@@ -18,10 +18,10 @@ module.exports = {
     },
     extend: {
       scrollSnapType: {
-        'y-mandatory': 'y mandatory',
+        "y-mandatory": "y mandatory",
       },
       scrollSnapAlign: {
-        start: 'start',
+        start: "start",
       },
       colors: {
         border: "hsl(var(--border))",
@@ -79,5 +79,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-}
+  plugins: [require("tailwindcss-animate"), require("tailwind-scrollbar")],
+};

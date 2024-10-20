@@ -145,11 +145,12 @@ export function InputBox() {
         <div
           ref={responseRef}
           style={{ opacity: 0 }}
-          className="max-w-[90vw] max-h-[60vh] overflow-y-scroll overflow-x-hidden text-center sm:text-xl dark:text-white text-black"
+          className="max-w-[90vw] max-h-[60vh] overflow-y-scroll scrollbar-thin scrollbar-thumb-rounded-full scrollbar-thumb-stone-800 scrollbar-track-stone-900 overflow-x-hidden text-center sm:text-xl dark:text-white text-black"
         >
           {parsedRes.map((item, index) => (
-            <div key={index} className="mb-10">
-              <pre className="bg-gray-800 text-white p-4 rounded max-w-[70vw] flex flex-col justify-start">
+            <div key={index} className="mb-10 border-b-8 p-10">
+              <strong className="text-3xl text-left flex justify-start ml-5 mb-3">Your Code:</strong>
+              <pre className="bg-neutral-900 text-white p-4 rounded-md max-w-[70vw] flex flex-col justify-start">
                 <code className="text-wrap text-left">{item.code}</code>
               </pre>
               <div className="alert alert-warning mt-2 max-w-[70vw] text-wrap">
@@ -157,8 +158,8 @@ export function InputBox() {
                 {item.vulnerability}
               </div>
               <div className="bg- text-blue-500 p-4 rounded mt-2 max-w-[70vw] text-wrap">
-                <strong>Fix:</strong>
-                <pre className="bg-gray-800 text-blue-400 p-4 rounded max-w-[70vw] flex flex-col justify-start">
+                <strong className="text-3xl text-left flex justify-start ml-5 mb-3">Fix:</strong>
+                <pre className="bg-neutral-800 text-blue-400 p-4 rounded-md max-w-[70vw] flex flex-col justify-start">
                   <code className="text-wrap text-left">{item.fix}</code>
                 </pre>
               </div>
