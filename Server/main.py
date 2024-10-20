@@ -78,3 +78,4 @@ response_json = chat_with_gpt(prompt_text["prompt"])
 
 # Print the response received in JSON format
 print("Response received from ChatGPT API:\n", response_json)
+

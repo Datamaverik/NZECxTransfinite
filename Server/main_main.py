@@ -5,7 +5,11 @@ import subprocess
 import sys
 import pathlib
 import shutil
-
+from fastapi import FastAPI
+from functools import lru_cache
+from response_router import response_router 
+app=FastAPI()
+app.include_router(response_router)
 
 def read_file_content(file_path):
     try:
@@ -48,8 +52,9 @@ def load_vuln_str(vulns):
     return json.loads(vulns)
 
 
+@lru_cache(maxsize=None)
 def evaluate_repo(github_link):
-
+    print("starting eval")
     response = []
 
     repo_name = clone_repo(github_link)
@@ -86,3 +91,8 @@ if __name__ == "__main__":
     print(response)
     print(type(response))
     # collect final json for frontend from frg.analyze_code_vulnerabilities()
+
+@app.get("/api/github")
+async def root():
+    return {"message": "API is working!"}
+    

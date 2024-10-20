@@ -37,3 +37,14 @@ export const vulnRes = async (input: CodeBody) => {
     throw new Error(er);
   }
 };
+
+export const gitResponse = async (input: string) => {
+  try {
+    const response = await api.get("/api/evaluate_repo", {
+      params: { github_link: input },
+    });
+    return response.data;
+  } catch (er) {
+    throw new Error(er);
+  }
+};

@@ -190,7 +190,7 @@ async def get_repo_files_content(repo_link: str):
 
 @app.get("/api/evaluate_repo")
 def evaluate_repo_api(github_link: str):
-    return evaluate_repo(github_link)
+    return evaluate_repo(github_link.strip())
 
 if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=8000)
